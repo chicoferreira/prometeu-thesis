@@ -1,37 +1,16 @@
-#let pantone1807 = rgb("990000")
-#let pantone159 = rgb("cc6633")
-#let pantonecoolgray7 = rgb("999999")
-#let blueuminho = rgb("24A2DA")
+#import "cover.typ": render_cover
 
-#set text(font: "NewsGotT", fill: pantonecoolgray7)
+#set text(font: "NewsGotT", size: 11pt)
 
-#set page(margin: (top: 0mm, bottom: 10mm, left: 79mm, right: 0mm))
-#set par(spacing: 0pt)
+#render_cover
 
-#grid(columns: 2, image("logos/color/UM.jpg", width: 26mm), image("logos/color/EE.jpg", width: 26mm))
+#set page(margin: 25mm, numbering: "i")
+#counter(page).update(1)
 
-#v(8.72mm)
-
-#[
-    #set par(leading: 0.4em)
-    #set text(size: 14.5pt)
-    *University of Minho*\
-    #text(font: "NewsGoth Lt BT")[School of Engineering]
-]
-
-#v(37.32mm)
-
-#place(top + left, float: false, dy: 90mm)[
-    #set text(size: 17pt)
-    #set par(leading: 0.4em, spacing: 25pt)
-
-    Author's full name
-
-    *Title Title Title Title Title Title*\
-    *Title Title Title Title Title*\
-    *Title Title Title Title*
-]
-
-#align(bottom, text(size: 10pt)[september 2025])
-
-#page(fill: pantonecoolgray7)[]
+#include "preamble/copyright.typ"
+#pagebreak()
+#include "preamble/acknowledgements.typ"
+#pagebreak()
+#include "preamble/integrity.typ"
+#pagebreak()
+#include "preamble/abstract.typ"
