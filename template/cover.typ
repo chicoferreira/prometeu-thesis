@@ -1,6 +1,6 @@
 #import "colors.typ": pantonecoolgray7
 
-#let render_cover = [
+#let render-cover = [
   #set text(fill: pantonecoolgray7)
 
   #set page(margin: (top: 0mm, bottom: 10mm, left: 79mm, right: 0mm))

@@ -1,6 +1,7 @@
-#import "cover.typ": render_cover
-#import "colors.typ": blueuminho
 #import "@preview/in-dexter:0.7.2": *
+
+#import "cover.typ": render-cover
+#import "colors.typ": *
 
 #set text(font: "NewsGotT", size: 11pt)
 #show link: set text(fill: blueuminho)
@@ -12,7 +13,33 @@
   it
 }
 
-#render_cover
+// Setup glossary
+#import "@preview/glossy:0.8.0": *
+#let glossary = (
+  gcd: (
+    short: "GCD",
+    long: "Greatest Common Divisor",
+  ),
+  lcm: (
+    short: "LCM",
+    long: "Least Common Multiple",
+  ),
+  maths: (
+    short: "Maths",
+    plural: "Maths",
+  ),
+  latex: (
+    short: "LaTeX",
+  ),
+  formula: (
+    short: "Formula",
+    plural: "Formulas",
+  )
+)
+
+#show: init-glossary.with(glossary)
+
+#render-cover
 
 #set page(margin: 25mm, numbering: "i")
 #counter(page).update(1)
@@ -28,7 +55,7 @@
 #pagebreak()
 #outline()
 #pagebreak()
-#outline(title: [List of Figures], target: figure.where(kind: figure))
+#outline(title: [List of Figures], target: figure.where(kind: image))
 #pagebreak()
 #outline(title: [List of Tables], target: figure.where(kind: table))
 #pagebreak()
@@ -59,18 +86,22 @@
   #it.body
 ]
 
-#show heading.where(level: 2): it => context [
-  #chapter-count.step()
-  #pagebreak(weak: true)
-  #set text(15pt)
-  Chapter #counter(heading).display()
+#let render-chapter(top, bottom) = {
+  pagebreak(weak: true)
+  if top != none { block(text(15pt, top), inset: (top: 30mm), below: 7mm) }
+  block(text(18pt, bottom), inset: (bottom: 15mm))
+}
 
-  #set text(18pt)
-  #it.body
-  #linebreak()
-]
+#show heading.where(level: 2): it => {
+  chapter-count.step()
+  render-chapter([Chapter #context counter(heading).display()], it.body)
+}
+
+#show heading.where(level: 3): set text(14pt)
+#show heading.where(level: 3): set block(above: 2em, below: 1.5em)
 
 = Introductory Material
+
 == Introduction
 
 Context, motivation, main aims.
@@ -85,7 +116,6 @@ Example of a citation: @GRM97, or #cite(<GRM97>, form: "full").
 This entry is in the `dissertation.bib` file.
 
 Check more information about bibliography here: https://typst.app/docs/reference/model/bibliography/ and here: https://typst.app/docs/reference/model/cite/.
-
 
 === Mathematical expressions
 
@@ -111,7 +141,11 @@ This is a footnote example #footnote[The quick brown fox jumps over the lazy dog
 
 === Acronyms and Glossary
 
-// TODO
+Given a set of numbers, there are elementary methods to compute its @gcd, which is abbreviated @gcd. This process is similar to that used for the @lcm.
+
+The @latex typesetting markup language is specially suitable for documents that include @maths. @formula:pl are rendered properly an easily once one gets used to the commands.
+
+This glossary is powered by the #link("https://typst.app/universe/package/glossy/")[glossy] package. Check more about it there.
 
 === Index
 
