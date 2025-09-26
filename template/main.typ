@@ -1,5 +1,6 @@
 #import "cover.typ": render_cover
 #import "colors.typ": blueuminho
+#import "@preview/in-dexter:0.7.2": *
 
 #set text(font: "NewsGotT", size: 11pt)
 #show link: set text(fill: blueuminho)
@@ -114,8 +115,11 @@ This is a footnote example #footnote[The quick brown fox jumps over the lazy dog
 
 === Index
 
-// TODO
+In this example, several keywords #index[keywords] will be used which are important and deserve to appear in the Index#index[Index].
 
+Terms like generate #index[generate] and some #index[others] will also show up. Terms in the index can also be nested#index([Index], [nested]).
+
+The index is powered by the #link("https://typst.app/universe/package/in-dexter/")[in-dexter] package. Check more about it there.
 
 == The problem and its challenges
 
@@ -169,8 +173,8 @@ Conclusions and future work
     [Task], [Oct], [Nov], [Dec], [Jan], [Feb], [Mar], [Apr], [May], [Jun], [Jul],
     [Background and SOA], filled, filled, filled, [], [], [], [], [], [], [],
     [PDR preparation], [], filled, filled, filled, [], [], [], [], [], [],
-    [Contribution], [], [], ..(filled, ) * 7, [],
-    [Writing up], [], [], [], [], [], [], ..(filled, ) * 4,
+    [Contribution], [], [], ..(filled,) * 7, [],
+    [Writing up], [], [], [], [], [], [], ..(filled,) * 4,
   ),
   caption: [Planned Schedule],
 )
@@ -179,3 +183,15 @@ For more elegant visualisation check some community-made packages like #link("ht
 
 // TODO: fix bibliography (will be done when this is provided as a template, so heading formatting will be only applied to the thesis content)
 #bibliography("dissertation.bib", full: true)
+
+== Index
+
+#let index-title(letter, counter) = {
+  set text(weight: "bold")
+  block(letter, above: 1.5em)
+}
+
+#columns(
+  2,
+  make-index(title: none, use-page-counter: true, section-title: index-title),
+)
