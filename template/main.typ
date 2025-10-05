@@ -1,9 +1,12 @@
 #import "@preview/in-dexter:0.7.2": *
 
+#import "formatting.typ": *
 #import "cover.typ": render-cover
 #import "colors.typ": *
 
-#set text(font: "NewsGotT", size: 11pt)
+#set text(font: "NewsGotT", size: 12pt)
+#set par(leading: 0.95em)
+#show footnote.entry: set text(size: 8pt)
 #show link: set text(fill: blueuminho)
 
 // Fake italic as NewsGotT doesn't have an italic style
@@ -34,9 +37,8 @@
   formula: (
     short: "Formula",
     plural: "Formulas",
-  )
+  ),
 )
-
 #show: init-glossary.with(glossary)
 
 #render-cover
@@ -44,61 +46,53 @@
 #set page(margin: 25mm, numbering: "i")
 #counter(page).update(1)
 
-#set heading(outlined: false)
-#include "preamble/copyright.typ"
-#pagebreak()
-#include "preamble/acknowledgements.typ"
-#pagebreak()
-#include "preamble/integrity.typ"
-#pagebreak()
-#include "preamble/abstract.typ"
-#pagebreak()
-#outline()
-#pagebreak()
-#outline(title: [List of Figures], target: figure.where(kind: image))
-#pagebreak()
-#outline(title: [List of Tables], target: figure.where(kind: table))
-#pagebreak()
-#pagebreak()
-#set heading(outlined: true)
+// Set level 1 heading to be chapters and level 2 headings to be sections (needed because of Part support)
+#show heading.where(level: 1): chapter-formatting()
+#show heading.where(level: 2): section-formatting()
 
-#set page(margin: 25mm, numbering: "1")
+#[
+  // Preamble should not be included in the outline
+  #set heading(outlined: false)
+
+  #include "preamble/copyright.typ"
+  #pagebreak()
+  #include "preamble/acknowledgements.typ"
+  #pagebreak()
+  #include "preamble/integrity.typ"
+  #pagebreak()
+  #include "preamble/abstract.typ"
+  #pagebreak()
+  #outline()
+  #pagebreak()
+  #outline(title: [List of Figures], target: figure.where(kind: image))
+  #pagebreak()
+  #outline(title: [List of Tables], target: figure.where(kind: table))
+  #pagebreak()
+  #pagebreak()
+
+  #chapter-count.update(0)
+]
+
+#set page(numbering: "1")
 #counter(page).update(1)
 
-#let chapter-count = counter("chapter counter")
+// = Part
+// == Chapter
+// === Section
+#show heading.where(level: 1): part-formatting()
+#show heading.where(level: 2): chapter-formatting(top: [Chapter #context chapter-count.display()])
+#show heading.where(level: 3): section-formatting()
 
+// Use chapter-count to number chapters and sections
 #set heading(numbering: (..nums) => {
   if nums.pos().len() == 1 {
     numbering("I", ..nums) // Part
   } else if nums.pos().len() == 2 {
     numbering("1", chapter-count.get().first()) // Chapter
   } else {
-    numbering("1.1", ..chapter-count.get(), ..nums.pos().slice(2))
+    numbering("1.1", ..chapter-count.get(), ..nums.pos().slice(2)) // Section
   }
 })
-
-#show heading.where(level: 1): it => [
-  #set align(center + horizon)
-  #set text(25pt)
-  #pagebreak(weak: true)
-  Part #context counter(heading).display()
-
-  #it.body
-]
-
-#let render-chapter(top, bottom) = {
-  pagebreak(weak: true)
-  if top != none { block(text(15pt, top), inset: (top: 30mm), below: 7mm) }
-  block(text(18pt, bottom), inset: (bottom: 15mm))
-}
-
-#show heading.where(level: 2): it => {
-  chapter-count.step()
-  render-chapter([Chapter #context counter(heading).display()], it.body)
-}
-
-#show heading.where(level: 3): set text(14pt)
-#show heading.where(level: 3): set block(above: 2em, below: 1.5em)
 
 = Introductory Material
 
@@ -122,6 +116,7 @@ Check more information about bibliography here: https://typst.app/docs/reference
 The mass-energy equivalence is expressed by the equation
 
 #[
+  // Move this set rule out of this content block to affect all equations in the document
   #set math.equation(numbering: "(1)")
   $
     E = m c^2
@@ -133,7 +128,7 @@ $
   E = m
 $
 
-Check more information about math expressions in: https://typst.app/docs/reference/math/equation/.
+Check more information about math expressions #link("https://typst.app/docs/reference/math/equation/")[here].
 
 === Footnotes
 
@@ -215,17 +210,38 @@ Conclusions and future work
 
 For more elegant visualisation check some community-made packages like #link("https://typst.app/universe/package/gantty/")[gantty] or #link("https://typst.app/universe/package/timeliney/")[timeliney].
 
-// TODO: fix bibliography (will be done when this is provided as a template, so heading formatting will be only applied to the thesis content)
-#bibliography("dissertation.bib", full: true)
+#show heading.where(level: 2): chapter-formatting()
 
-== Index
+// Render bibliography
+#heading(depth: 2, outlined: false)[Bibliography]
+#bibliography("dissertation.bib", full: true, title: none)
 
-#let index-title(letter, counter) = {
-  set text(weight: "bold")
-  block(letter, above: 1.5em)
-}
-
+// Render index
+#heading(depth: 2, outlined: false)[Index]
 #columns(
   2,
-  make-index(title: none, use-page-counter: true, section-title: index-title),
+  make-index(
+    title: none,
+    use-page-counter: true,
+    section-title: (letter, counter) => {
+      set text(weight: "bold")
+      block(letter, above: 1.5em)
+    },
+  ),
 )
+
+= Appendices
+
+#chapter-count.update(0)
+#set heading(numbering: (..) => chapter-count.display("A"))
+#show heading.where(level: 2): chapter-formatting(top: [Appendix #context chapter-count.display("A")])
+
+#include "appendix.typ"
+
+#set page(numbering: none)
+
+#page(fill: pantonecoolgray7)[]
+
+#align(
+  horizon,
+)[Place here information about funding, FCT project, etc. in which the work is framed. Leave empty otherwise.]

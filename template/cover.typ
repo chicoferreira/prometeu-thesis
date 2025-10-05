@@ -74,6 +74,5 @@
     *Co-Supervisor Name*
   ]
 
-
   #align(bottom, text(size: 10pt)[september 2025])
 ]
