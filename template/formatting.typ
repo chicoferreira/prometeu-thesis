@@ -1,13 +1,18 @@
 #let chapter-count = counter("chapter counter")
 
-#let part-formatting() = it => [
-  #set align(center + horizon)
-  #set text(25pt)
-  #pagebreak(weak: true)
-  Part #context counter(heading).display()
+#let part-formatting() = it => {
+  set align(center + horizon)
+  set text(25pt)
+  pagebreak(weak: true)
+  
+  grid(
+    row-gutter: 1em,
+    [Part #context counter(heading).display()],
+    it.body,
+  )
 
-  #it.body
-]
+  v(4em) // Move the part title up
+}
 
 #let chapter-formatting(top: none) = it => {
   chapter-count.step()

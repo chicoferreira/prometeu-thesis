@@ -5,7 +5,7 @@
 #import "colors.typ": *
 
 #set text(font: "NewsGotT", size: 12pt)
-#set par(leading: 0.95em)
+#set par(leading: 0.95em, spacing: 1.9em)
 #show footnote.entry: set text(size: 8pt)
 #show link: set text(fill: blueuminho)
 
