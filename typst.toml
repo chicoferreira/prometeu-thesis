@@ -1,0 +1,15 @@
+[package]
+name = "uminho-thesis"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["chicoferreira <@chicoferreira>"]
+license = "MIT"
+description = "Master's Dissertation in Informatics Engineering at the University of Minho"
+repository = "https://github.com/chicoferreira/uminho-thesis"
+categories = ["thesis"]
+disciplines = ["computer-science"]
+
+[template]
+path = "template"
+entrypoint = "main.typ"
+thumbnail = "thumbnail.png" # TODO: Add thumbnail

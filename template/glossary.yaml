@@ -1,0 +1,14 @@
+gcd:
+  short: "GCD"
+  long: "Greatest Common Divisor"
+lcm:
+  short: "LCM"
+  long: "Least Common Multiple"
+maths:
+  short: "Maths"
+  plural: "Maths"
+latex:
+  short: "LaTeX"
+formula:
+  short: "Formula"
+  plural: "Formulas"

@@ -1,14 +1,22 @@
-#import "colors.typ": pantonecoolgray7
+#import "colors.typ"
 
-#let render-cover = [
-  #set text(fill: pantonecoolgray7)
+#let render-cover(
+  author: [],
+  title: [],
+  date: [],
+  supervisor: [],
+  co-supervisor: [],
+  images: (),
+  gray-images: (),
+) = [
+  #set text(fill: colors.pantonecoolgray7)
 
   #set page(margin: (top: 0mm, bottom: 10mm, left: 79mm, right: 0mm))
   #set par(spacing: 0pt)
 
   #grid(
     columns: 2,
-    image("logos/color/UM.jpg", width: 26mm), image("logos/color/EE.jpg", width: 26mm),
+    ..images.map(block.with(width: 26mm, height: 26mm)),
   )
 
   #v(8.72mm)
@@ -26,20 +34,18 @@
     #set text(size: 17pt)
     #set par(leading: 20.4pt - 0.75em, spacing: 25pt)
 
-    Author's full name
+    #author
 
-    *Title Title Title Title Title Title*\
-    *Title Title Title Title Title*\
-    *Title Title Title Title*
+    *#title*
   ]
 
-  #align(bottom, text(size: 10pt)[september 2025])
+  #align(bottom, text(size: 10pt, date))
 
-  #page(fill: pantonecoolgray7)[]
+  #page(fill: colors.pantonecoolgray7)[]
 
   #grid(
     columns: 2,
-    image("logos/gray/UM.jpg", width: 26mm), image("logos/gray/EE.jpg", width: 26mm),
+    ..gray-images.map(block.with(width: 26mm, height: 26mm)),
     column-gutter: 0.5mm,
   )
 
@@ -56,11 +62,9 @@
     #set text(size: 17pt)
     #set par(leading: 20.4pt - 0.75em, spacing: 25pt)
 
-    Author's full name
+    #author
 
-    *Title Title Title Title Title Title*\
-    *Title Title Title Title Title*\
-    *Title Title Title Title*
+    *#title*
   ]
 
   #place(top + left, float: false, dy: 180mm)[
@@ -70,9 +74,9 @@
     Master's Dissertation in Informatics Engineering
 
     Dissertation supervised by\
-    *Supervisor Name*\
-    *Co-Supervisor Name*
+    *#supervisor*\
+    *#co-supervisor*
   ]
 
-  #align(bottom, text(size: 10pt)[september 2025])
+  #align(bottom, text(size: 10pt, date))
 ]
