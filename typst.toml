@@ -8,8 +8,9 @@ description = "Master's Dissertation in Informatics Engineering at the Universit
 repository = "https://github.com/chicoferreira/uminho-thesis"
 categories = ["thesis"]
 disciplines = ["computer-science"]
+keywords = ["thesis", "masters", "uminho", "informatics"]
 
 [template]
 path = "template"
 entrypoint = "main.typ"
-thumbnail = "thumbnail.png" # TODO: Add thumbnail
+thumbnail = "thumbnail.png"
