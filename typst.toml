@@ -9,6 +9,7 @@ repository = "https://github.com/chicoferreira/uminho-thesis"
 categories = ["thesis"]
 disciplines = ["computer-science"]
 keywords = ["thesis", "masters", "uminho", "informatics"]
+exclude = ["example.pdf"]
 
 [template]
 path = "template"
