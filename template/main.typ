@@ -48,11 +48,9 @@ State of the art review; related work.
 
 === Citations
 
-Example of a citation: @GRM97, or #cite(<GRM97>, form: "full").
+Example of a citation: @GRM97, or #cite(<GRM97>, form: "full"). This entry is in the `dissertation.bib` file.
 
-This entry is in the `dissertation.bib` file.
-
-Check more information about bibliography here: https://typst.app/docs/reference/model/bibliography/ and here: https://typst.app/docs/reference/model/cite/.
+Check more information about bibliography #link("https://typst.app/docs/reference/model/bibliography/")[here] and #link("https://typst.app/docs/reference/model/cite/")[here].
 
 === Mathematical expressions
 
@@ -105,7 +103,7 @@ Example of inserting an image as displayed text,
 
 or as a figure:
 
-#figure(image("logos/color/UM.jpg", width: 10%), caption: [Logo of the University of Minho])
+#figure(image("logos/color/UM.jpg", width: 30%), caption: [Logo of the University of Minho])
 
 = Core of the Dissertation
 

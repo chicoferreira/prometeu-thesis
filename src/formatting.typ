@@ -28,8 +28,8 @@
 #let chapter-with-top() = chapter(top: [Chapter #context chapter-count.display()])
 
 #let section() = it => {
-  set text(14pt)
-  set block(above: 3.5em, below: 2em)
+  set text(16pt)
+  set block(above: 2.5em, below: 1.5em)
   it
 }
 
