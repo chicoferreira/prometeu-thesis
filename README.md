@@ -25,7 +25,7 @@ When compiling your project, ensure that the necessary fonts are either installe
 
 ## Current Limitations
 
-Currently, this template only supports covers for Master's theses and does not yet accommodate Doctoral (PhD) theses. Contributions to expand this support are welcome. 
+Currently, this template only supports covers for Master's theses and does not yet accommodate Doctoral (PhD) theses, and it is only available in English (there is no Portuguese version yet). Contributions to expand support are welcome.
 
 By default, the template includes only the required School of Engineering logos for the cover, but you can easily change these to your own school's logo. The official and high-resolution logos are available in the [official formatting guidelines](https://alunos.uminho.pt/PT/estudantes/Paginas/InfoUteisFormatacao.aspx).
 
