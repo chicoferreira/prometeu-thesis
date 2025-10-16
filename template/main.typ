@@ -8,8 +8,8 @@
     [Supervisor Name],
     [Co-Supervisor Name],
   ),
-  cover-images: (image("./logos/color/UM.jpg"), image("logos/color/EE.jpg")),
-  cover-gray-images: (image("./logos/gray/UM.jpg"), image("logos/gray/EE.jpg")),
+  cover-images: (image("logos/uminho/color/UM.jpg"), image("logos/uminho/color/EE.jpg")),
+  cover-gray-images: (image("logos/uminho/gray/UM.jpg"), image("logos/uminho/gray/EE.jpg")),
   school: [School of Engineering],
   degree: [Master's Dissertation in Informatics Engineering],
 )
@@ -105,11 +105,11 @@ The problem and its challenges.
 
 Example of inserting an image as displayed text,
 
-#align(center, image("logos/color/UM.jpg", width: 10%))
+#align(center, image("logos/uminho/color/UM.jpg", width: 10%))
 
 or as a figure:
 
-#figure(image("logos/color/UM.jpg", width: 30%), caption: [Logo of the University of Minho])
+#figure(image("logos/uminho/color/UM.jpg", width: 30%), caption: [Logo of the University of Minho])
 
 = Core of the Dissertation
 
