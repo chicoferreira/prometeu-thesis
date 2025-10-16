@@ -4,10 +4,14 @@
   author: "Author's full name",
   title: [Title Title Title Title Title Title \ Title Title Title Title Title \ Title Title Title Title],
   date: [september 2025],
-  supervisor: [Supervisor Name],
-  co-supervisor: [Co-Supervisor Name],
+  supervisors: (
+    [Supervisor Name],
+    [Co-Supervisor Name],
+  ),
   cover-images: (image("./logos/color/UM.jpg"), image("logos/color/EE.jpg")),
   cover-gray-images: (image("./logos/gray/UM.jpg"), image("logos/gray/EE.jpg")),
+  school: [School of Engineering],
+  degree: [Master's Dissertation in Informatics Engineering],
 )
 
 // Setup glossary

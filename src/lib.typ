@@ -9,10 +9,11 @@
   author: "",
   title: [],
   date: [],
-  supervisor: [],
-  co-supervisor: [],
+  supervisors: (),
   cover-images: (),
   cover-gray-images: (),
+  school: [],
+  degree: [],
 ) = doc => {
   set text(font: "NewsGotT", size: 12pt)
   set par(leading: 0.95em, spacing: 1.9em)
@@ -28,10 +29,11 @@
     author: author,
     title: title,
     date: date,
-    supervisor: supervisor,
-    co-supervisor: co-supervisor,
+    supervisors: supervisors,
     images: cover-images,
     gray-images: cover-gray-images,
+    school: school,
+    degree: degree,
   )
 
   // Fake italic as NewsGotT doesn't have an italic style

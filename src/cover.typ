@@ -4,10 +4,11 @@
   author: [],
   title: [],
   date: [],
-  supervisor: [],
-  co-supervisor: [],
+  supervisors: (),
   images: (),
   gray-images: (),
+  school: [],
+  degree: []
 ) = [
   #set text(fill: colors.pantonecoolgray7)
 
@@ -25,7 +26,7 @@
     #set par(leading: 0.4em)
     #set text(size: 14.5pt)
     *University of Minho*\
-    #text(font: "NewsGoth Lt BT")[School of Engineering]
+    #text(font: "NewsGoth Lt BT", school)
   ]
 
   #v(37.32mm)
@@ -55,7 +56,7 @@
     #set par(leading: 0.4em)
     #set text(size: 14.5pt)
     *University of Minho*\
-    #text(font: "NewsGoth Lt BT")[School of Engineering]
+    #text(font: "NewsGoth Lt BT", school)
   ]
 
   #place(top + left, float: false, dy: 90mm)[
@@ -71,11 +72,13 @@
     #set text(size: 14.5pt)
     #set par(leading: 16.8pt - 0.75em, spacing: 25pt)
 
-    Master's Dissertation in Informatics Engineering
+    #degree
 
     Dissertation supervised by\
-    *#supervisor*\
-    *#co-supervisor*
+    #for value in supervisors {
+      text(value, weight: "bold")
+      linebreak()
+    }
   ]
 
   #align(bottom, text(size: 10pt, date))
