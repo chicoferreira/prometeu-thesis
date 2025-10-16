@@ -12,7 +12,15 @@ You can find the unmodified output of the template in [example.pdf](./example.pd
 
 ## How to use this template
 
-To use this template in the Typst Web App, create a new project by selecting "Start from template" and searching for this project. The correct fonts should be applied automatically.
+### Setting up fonts
+
+This template requires the following fonts: NewsGotT (001.005), NewsGotTBold (001.005) and NewsGoth Lt BT (2.001 mfgpctt 4.4).
+
+Unfortunately, Typst [disallows font files to be bundled in packages](https://github.com/typst/packages/blob/main/docs/resources.md#fonts-are-not-supported-in-packages). The original fonts (.ttf files) should be grabbed from the zip file on the [official LaTeX template](https://web.di.uminho.pt/sitedi/latex/).
+
+### Using on Typst Web
+
+Create a new project by selecting "Start from template" and searching for this project. Then create a `fonts` folder in your project and add the three required fonts there.
  
 ### Using Locally
 
@@ -21,7 +29,7 @@ To work locally, first [install Typst](https://typst.app/open-source/), then ini
 typst init @preview/uminho-thesis:0.1.0
 ```
 
-When compiling your project, ensure that the necessary fonts are either installed system-wide (use `typst fonts` to check), or specify your font directory by adding `./fonts` as a valid font folder in your Typst LSP settings. Alternatively, if running Typst from the command line, use the `--font-path ./fonts` option.
+Make the required fonts available by either installing them system-wide (use `typst fonts` to verify detection) or by placing them in a folder of your choice (e.g., `./fonts`) and referencing it via your Typst LSP settings or use the CLI option `--font-path <folder>`.
 
 ## Current Limitations
 
