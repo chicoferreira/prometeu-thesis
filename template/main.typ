@@ -85,7 +85,7 @@ This is a footnote example #footnote[The quick brown fox jumps over the lazy dog
 
 Given a set of numbers, there are elementary methods to compute its @gcd, which is abbreviated @gcd. This process is similar to that used for the @lcm.
 
-The @typst language is specially suitable for documents that include @maths. @formula:pl are rendered properly an easily once one gets used to the commands.
+The @typst language is specially suitable for documents that include @maths. @formula:pl are rendered properly as the Typst syntax is designed to be easy to understand and use.
 
 This glossary is powered by the #link("https://typst.app/universe/package/glossy/")[glossy] package. Check more about it there.
 
