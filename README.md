@@ -2,6 +2,8 @@
 
 The official Typst template for writing theses at the University of Minho. 
 
+<img src="thumbnail.png" alt="Template cover thumbnail" width="300"/>
+
 It is based on the [official LaTeX template provided by the Department of Informatics](https://web.di.uminho.pt/sitedi/latex/) and fully complies with the [university’s required formatting standards and guidelines](https://alunos.uminho.pt/PT/estudantes/Paginas/InfoUteisFormatacao.aspx). 
 
 This template closely follows the LaTeX version, while providing improvements in features, usability and presentation. It is designed to be as extensible, customizable, and comprehensible as possible right out of the box.
