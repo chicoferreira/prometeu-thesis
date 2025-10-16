@@ -4,11 +4,10 @@ version = "0.1.0"
 entrypoint = "src/lib.typ"
 authors = ["chicoferreira <@chicoferreira>"]
 license = "MIT"
-description = "Master's Dissertation in Informatics Engineering at the University of Minho"
+description = "Thesis template for University of Minho"
 repository = "https://github.com/chicoferreira/uminho-thesis"
 categories = ["thesis"]
-disciplines = ["computer-science"]
-keywords = ["thesis", "masters", "uminho", "informatics"]
+keywords = ["thesis", "masters", "uminho"]
 exclude = ["example.pdf"]
 
 [template]
