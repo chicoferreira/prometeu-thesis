@@ -75,10 +75,7 @@
     #degree
 
     Dissertation supervised by\
-    #for value in supervisors {
-      text(value, weight: "bold")
-      linebreak()
-    }
+    #supervisors.map(text.with(weight: "bold")).join(linebreak())
   ]
 
   #align(bottom, text(size: 10pt, date))

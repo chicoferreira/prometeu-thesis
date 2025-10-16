@@ -33,4 +33,4 @@ By default, the template includes only the required School of Engineering logos 
 
 This template is provided under the [MIT License](./LICENSE).
 
-All fonts and official logos belong to University of Minho.
+All fonts and official logos belong to Universidade do Minho.
