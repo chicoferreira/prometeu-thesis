@@ -52,7 +52,9 @@ State of the art review; related work.
 
 === Citations
 
-Example of a citation: @GRM97, or #cite(<GRM97>, form: "full"). This entry is in the `dissertation.bib` file.
+Example of a citation: @rustbook, or #cite(<rustbook>, form: "full"). This entry is in the `bibliography.yml` file.
+
+Typst also supports the LaTeX `.bib` file format, but the #link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva YAML format] is easier to use.
 
 Check more information about bibliography #link("https://typst.app/docs/reference/model/bibliography/")[here] and #link("https://typst.app/docs/reference/model/cite/")[here].
 
@@ -83,7 +85,7 @@ This is a footnote example #footnote[The quick brown fox jumps over the lazy dog
 
 Given a set of numbers, there are elementary methods to compute its @gcd, which is abbreviated @gcd. This process is similar to that used for the @lcm.
 
-The @latex typesetting markup language is specially suitable for documents that include @maths. @formula:pl are rendered properly an easily once one gets used to the commands.
+The @typst language is specially suitable for documents that include @maths. @formula:pl are rendered properly an easily once one gets used to the commands.
 
 This glossary is powered by the #link("https://typst.app/universe/package/glossy/")[glossy] package. Check more about it there.
 
@@ -157,7 +159,8 @@ For more elegant visualisation check some community-made packages like #link("ht
 
 #formatting.show-postamble[
   // Render bibliography
-  #bibliography("dissertation.bib", full: true)
+  // Change this to a .bib file if you prefer that format instead
+  #bibliography("bibliography.yml", full: true)
 
   // Render index
   = Index
