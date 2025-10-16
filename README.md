@@ -18,7 +18,7 @@ To use this template in the Typst Web App, create a new project by selecting "St
 
 To work locally, first [install Typst](https://typst.app/open-source/), then initialize your project with:
 ```
-typst init @preview/uminho-thesis
+typst init @preview/uminho-thesis:0.1.0
 ```
 
 When compiling your project, ensure that the necessary fonts are either installed system-wide (use `typst fonts` to check), or specify your font directory by adding `./fonts` as a valid font folder in your Typst LSP settings. Alternatively, if running Typst from the command line, use the `--font-path ./fonts` option.
