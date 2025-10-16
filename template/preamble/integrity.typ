@@ -1,4 +1,4 @@
-#import "@preview/uminho-thesis:0.1.0": author-state, date-state
+#import "@preview/prometeu-thesis:0.1.0": author-state, date-state
 
 = Statement of Integrity
 
