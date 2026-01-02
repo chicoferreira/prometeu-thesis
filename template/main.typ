@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:0.1.0": colors, formatting, thesis
+#import "@preview/prometeu-thesis:0.1.2": colors, formatting, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -11,7 +11,7 @@
   cover-images: (image("logos/uminho/color/UM.jpg"), image("logos/uminho/color/EE.jpg")),
   cover-gray-images: (image("logos/uminho/gray/UM.jpg"), image("logos/uminho/gray/EE.jpg")),
   school: [School of Engineering],
-  degree: [Master's Dissertation in Informatics Engineering],
+  degree: [Master's Dissertation in Informatics Engineering]
 )
 
 // Setup glossary
