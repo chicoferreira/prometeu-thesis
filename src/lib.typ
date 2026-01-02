@@ -16,7 +16,7 @@
   degree: [],
 ) = doc => {
   set text(font: "NewsGotT", size: 12pt)
-  set par(leading: 0.95em, spacing: 1.9em)
+  set par(leading: 0.95em, spacing: 1.9em, justify: true)
   show footnote.entry: set text(size: 8pt)
   show link: set text(fill: colors.blueuminho)
 
