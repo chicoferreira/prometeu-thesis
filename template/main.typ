@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:0.1.2": colors, formatting, thesis
+#import "@preview/prometeu-thesis:0.1.0": colors, formatting, thesis
 
 #show: thesis(
   author: "Author's full name",
