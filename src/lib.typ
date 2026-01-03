@@ -1,9 +1,7 @@
 #import "colors.typ"
 #import "cover.typ": render-cover
+#import "state.typ"
 #import "formatting.typ"
-
-#let author-state = state("author", [])
-#let date-state = state("date", [])
 
 #let thesis(
   author: "",
@@ -14,16 +12,28 @@
   cover-gray-images: (),
   school: [],
   degree: [],
+  language: "en"
 ) = doc => {
-  set text(font: "NewsGotT", size: 12pt)
-  set par(leading: 0.95em, spacing: 1.9em)
+  if language != "en" and language != "pt" {
+    panic("Language must be either 'en' or 'pt'")
+  }
+
+  set text(
+    font: "NewsGotT",
+    size: 12pt,
+    lang: language,
+    region: if language == "pt" { "PT" } else { "US" }
+  )
+
+  set par(leading: 0.95em, spacing: 1.9em, justify: true)
   show footnote.entry: set text(size: 8pt)
   show link: set text(fill: colors.blueuminho)
 
   set document(title: title, author: author)
 
-  author-state.update(author)
-  date-state.update(date)
+  state.author.update(author)
+  state.date.update(date)
+  state.language.update(language)
 
   render-cover(
     author: author,
@@ -34,6 +44,7 @@
     gray-images: cover-gray-images,
     school: school,
     degree: degree,
+    language: language,
   )
 
   // Fake italic as NewsGotT doesn't have an italic style

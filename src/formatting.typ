@@ -1,3 +1,4 @@
+#import "state.typ"
 #let chapter-count = counter("chapter counter")
 
 #let chapter(top: none) = it => {
@@ -13,12 +14,18 @@
 
 #let chapter-with-top() = it => {
   chapter-count.step()
-  chapter(top: [Chapter #context chapter-count.display()])(it)
+  chapter(top: context [
+    #if state.language.get() == "pt" [Capítulo] else [Chapter]
+    #chapter-count.display()
+  ])(it)
 }
 
 #let chapter-appendix() = it => {
   chapter-count.step()
-  chapter(top: [Appendix #context chapter-count.display("A")])(it)
+  chapter(top: context [
+    #if state.language.get() == "pt" [Apêndice] else [Appendix]
+    #chapter-count.display("A")
+  ])(it)
 }
 
 #let section() = it => {
