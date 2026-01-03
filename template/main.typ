@@ -11,7 +11,9 @@
   cover-images: (image("logos/uminho/color/UM.jpg"), image("logos/uminho/color/EE.jpg")),
   cover-gray-images: (image("logos/uminho/gray/UM.jpg"), image("logos/uminho/gray/EE.jpg")),
   school: [School of Engineering],
-  degree: [Master's Dissertation in Informatics Engineering]
+  degree: [Master's Dissertation in Informatics Engineering],
+  // Set this to "pt" for Portuguese titles
+  language: "en"
 )
 
 // Setup glossary

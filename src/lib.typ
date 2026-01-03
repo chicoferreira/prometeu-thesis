@@ -1,10 +1,7 @@
 #import "colors.typ"
 #import "cover.typ": render-cover
+#import "state.typ"
 #import "formatting.typ"
-
-#let author-state = state("author", [])
-#let date-state = state("date", [])
-#let language-state = state("language", [])
 
 #let thesis(
   author: "",
@@ -17,10 +14,14 @@
   degree: [],
   language: "en"
 ) = doc => {
+  if language != "en" and language != "pt" {
+    panic("Language must be either 'en' or 'pt'")
+  }
+
   set text(
-    font: "NewsGotT", 
-    size: 12pt, 
-    lang: if language == "pt" { "pt" } else { "en" },
+    font: "NewsGotT",
+    size: 12pt,
+    lang: language,
     region: if language == "pt" { "PT" } else { "US" }
   )
 
@@ -30,9 +31,9 @@
 
   set document(title: title, author: author)
 
-  author-state.update(author)
-  date-state.update(date)
-  language-state.update(language)
+  state.author.update(author)
+  state.date.update(date)
+  state.language.update(language)
 
   render-cover(
     author: author,
