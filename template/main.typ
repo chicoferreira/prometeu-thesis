@@ -165,7 +165,7 @@ For more elegant visualisation check some community-made packages like #link("ht
   #bibliography("bibliography.yml", full: true)
 
   // Render index
-  = Index
+  #heading(level: 1, outlined: false)[Index]
   #columns(
     2,
     make-index(
