@@ -27,6 +27,9 @@
 
   set par(leading: 0.95em, spacing: 1.9em, justify: true)
   show footnote.entry: set text(size: 8pt)
+  
+  show footnote: set text(fill: colors.blueuminho)
+  show cite: set text(fill: colors.blueuminho)
   show link: set text(fill: colors.blueuminho)
 
   set document(title: title, author: author)
