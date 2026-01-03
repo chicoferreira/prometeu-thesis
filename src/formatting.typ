@@ -9,11 +9,8 @@
   grid(
     row-gutter: 1em,
     context [
-      #if state.language.get() == "pt" [
-        Parte #counter(heading).display()
-      ] else [
-        Part #counter(heading).display()
-      ]
+      #if state.language.get() == "pt" [Parte] else [Part]
+      #counter(heading).display()
     ],
     it.body,
   )
