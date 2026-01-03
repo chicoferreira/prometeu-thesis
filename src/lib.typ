@@ -17,7 +17,16 @@
 ) = doc => {
   set text(font: "NewsGotT", size: 12pt)
   set par(leading: 0.95em, spacing: 1.9em)
-  show footnote.entry: set text(size: 8pt)
+
+  show footnote: set text(fill: colors.blueuminho, size: 17pt)
+  show footnote.entry: it => {
+    set text(size: 8pt)
+    let loc = it.note.location()
+    let number = text(size: 7pt, baseline: -0.3em, numbering("1", ..counter(footnote).at(loc)))
+    [#number #it.note.body]
+  }
+
+  show cite: set text(fill: colors.blueuminho)
   show link: set text(fill: colors.blueuminho)
 
   set document(title: title, author: author)
