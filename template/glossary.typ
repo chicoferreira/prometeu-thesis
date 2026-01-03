@@ -1,5 +1,4 @@
 #import "@preview/glossarium:0.5.9": *
-#import "colors.typ"
 
 #let custom-acronyms-print-title(entry) = {
   let result = text(weight: "bold")[#entry.short]
@@ -15,6 +14,8 @@
   entries,
   show-all: false,
 ) = {
+  [= Acronyms]
+
   print-glossary(
     entries,
     show-all: show-all,
@@ -46,6 +47,8 @@
   entries,
   show-all: false,
 ) = {
+  [= Glossary]
+
   print-glossary(
     entries,
     show-all: show-all,

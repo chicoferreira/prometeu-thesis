@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:0.1.0": colors, formatting, glossary, thesis
+#import "@preview/prometeu-thesis:0.1.0": colors, formatting, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -16,6 +16,8 @@
 
 // Setup glossary and acronyms
 #import "@preview/glossarium:0.5.9": *
+#import "glossary.typ": *
+
 #show: make-glossary
 #let acronyms-data = yaml("acronyms.yml")
 #let glossary-data = yaml("glossary.yml")
@@ -39,11 +41,9 @@
   #pagebreak()
   #outline(title: [List of Tables], target: figure.where(kind: table))
   #pagebreak()
-  = Acronyms
-  #glossary.show-acronyms(acronyms-data)
+  #show-acronyms(acronyms-data)
   #pagebreak()
-  = Glossary
-  #glossary.show-glossary(glossary-data)
+  #show-glossary(glossary-data)
   #pagebreak()
 ]
 

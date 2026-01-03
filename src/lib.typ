@@ -1,7 +1,6 @@
 #import "colors.typ"
 #import "cover.typ": render-cover
 #import "formatting.typ"
-#import "glossary.typ"
 
 #let author-state = state("author", [])
 #let date-state = state("date", [])
