@@ -1,3 +1,4 @@
+#import "state.typ"
 #let chapter-count = counter("chapter counter")
 
 #let part() = it => {
@@ -7,7 +8,10 @@
 
   grid(
     row-gutter: 1em,
-    [Part #context counter(heading).display()],
+    context [
+      #if state.language.get() == "pt" [Parte] else [Part]
+      #counter(heading).display()
+    ],
     it.body,
   )
 
@@ -25,7 +29,10 @@
   })
 }
 
-#let chapter-with-top() = chapter(top: [Chapter #context chapter-count.display()])
+#let chapter-with-top() = chapter(top: context [
+  #if state.language.get() == "pt" [Capítulo] else [Chapter]
+  #chapter-count.display()
+])
 
 #let section() = it => {
   set text(16pt)
@@ -60,7 +67,10 @@
 #let show-appendix(content) = {
   chapter-count.update(0)
   show heading.where(level: 2): set heading(numbering: (..) => chapter-count.display("A"))
-  show heading.where(level: 2): chapter(top: [Appendix #context chapter-count.display("A")])
+  show heading.where(level: 2): chapter(top: context [
+    #if state.language.get() == "pt" [Apêndice] else [Appendix]
+    #chapter-count.display("A")
+  ])
   content
 }
 

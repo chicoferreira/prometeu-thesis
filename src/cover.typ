@@ -8,7 +8,8 @@
   images: (),
   gray-images: (),
   school: [],
-  degree: []
+  degree: [],
+  language: "en"
 ) = [
   #set text(fill: colors.pantonecoolgray7)
 
@@ -25,7 +26,11 @@
   #[
     #set par(leading: 0.4em)
     #set text(size: 14.5pt)
-    *University of Minho*\
+    #if language == "pt" [
+      *Universidade do Minho*\
+    ] else [
+      *University of Minho*\
+    ]
     #text(font: "NewsGoth Lt BT", school)
   ]
 
@@ -55,7 +60,11 @@
   #[
     #set par(leading: 0.4em)
     #set text(size: 14.5pt)
-    *University of Minho*\
+    #if language == "pt" [
+      *Universidade do Minho*\
+    ] else [
+      *University of Minho*\
+    ]
     #text(font: "NewsGoth Lt BT", school)
   ]
 
@@ -74,7 +83,11 @@
 
     #degree
 
-    Dissertation supervised by\
+    #if language == "pt" [
+      Trabalho efetuado sob a orientação de\
+    ] else [
+      Dissertation supervised by\
+    ]
     #supervisors.map(text.with(weight: "bold")).join(linebreak())
   ]
 
