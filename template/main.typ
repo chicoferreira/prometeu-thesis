@@ -16,9 +16,37 @@
   language: "en"
 )
 
-// Setup glossary
-#import "@preview/glossy:0.8.0": *
-#show: init-glossary.with(yaml("glossary.yaml"))
+// Setup glossary and acronyms
+#import "@preview/glossarium:0.5.9": *
+
+#show: make-glossary
+#let acronyms-data = yaml("acronyms.yml")
+#let glossary-data = yaml("glossary.yml")
+#register-glossary(acronyms-data + glossary-data)
+
+#let show-acronyms = print-glossary(
+  acronyms-data,
+  // Change this to your liking
+  show-all: true,
+  disable-back-references: true,
+  user-print-title: entry => {
+    let description = if entry.long != none { h(0.5em) + entry.long + [.] }
+    text(weight: "bold", entry.short) + description
+  },
+)
+
+#let show-glossary = print-glossary(
+  glossary-data,
+  // Change this to your liking
+  show-all: true,
+  disable-back-references: true,
+  user-print-title: entry => {
+    let title = if entry.long == none { entry.short } else { entry.long }
+    text(weight: "bold", title) + h(0.5em) + entry.description
+  },
+  user-print-description: entry => if entry.description != none { [.] },
+  description-separator: [],
+)
 
 // Setup index
 #import "@preview/in-dexter:0.7.2": *
@@ -38,6 +66,11 @@
   #pagebreak()
   #outline(title: [List of Tables], target: figure.where(kind: table))
   #pagebreak()
+  = Acronyms
+  #show-acronyms
+  #pagebreak()
+  = Glossary
+  #show-glossary
   #pagebreak()
 ]
 
@@ -54,9 +87,9 @@ State of the art review; related work.
 
 === Citations
 
-Example of a citation: @rustbook, or #cite(<rustbook>, form: "full"). This entry is in the `bibliography.yml` file.
+Example of a citation: @rustbook or #cite(<rustbook>, form: "full"). This entry is in the `bibliography.yml` file.
 
-Typst also supports the LaTeX `.bib` file format, but the #link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva YAML format] is easier to use.
+@typst also supports the @latex `.bib` file format, #link("https://www.bibtex.org/Format/")[BibTeX], but the #link("https://github.com/typst/hayagriva/blob/main/docs/file-format.md")[Hayagriva YAML format] is easier to use.
 
 Check more information about bibliography #link("https://typst.app/docs/reference/model/bibliography/")[here] and #link("https://typst.app/docs/reference/model/cite/")[here].
 
@@ -85,11 +118,11 @@ This is a footnote example #footnote[The quick brown fox jumps over the lazy dog
 
 === Acronyms and Glossary
 
-Given a set of numbers, there are elementary methods to compute its @gcd, which is abbreviated @gcd. This process is similar to that used for the @lcm.
+Given a set of numbers, there are elementary methods to compute its @gcd:long, which is abbreviated @gcd:short. This process is similar to that used for the @lcm.
 
-The @typst language is specially suitable for documents that include @maths. @formula:pl are rendered properly as the Typst syntax is designed to be easy to understand and use.
+The @typst language is specially suitable for documents that include @maths:long. @formula:pl are rendered properly as the Typst syntax is designed to be easy to understand and use.
 
-This glossary is powered by the #link("https://typst.app/universe/package/glossy/")[glossy] package. Check more about it there.
+This glossary is powered by the #link("https://typst.app/universe/package/glossarium/")[glossarium] package. Check more about it there.
 
 === Index
 
@@ -149,8 +182,8 @@ Conclusions and future work
   table(
     columns: 11,
     [Task], [Oct], [Nov], [Dec], [Jan], [Feb], [Mar], [Apr], [May], [Jun], [Jul],
-    [Background and SOA], filled, filled, filled, [], [], [], [], [], [], [],
-    [PDR preparation], [], filled, filled, filled, [], [], [], [], [], [],
+    [Background and @soa:short], filled, filled, filled, [], [], [], [], [], [], [],
+    [@pdr:short preparation], [], filled, filled, filled, [], [], [], [], [], [],
     [Contribution], [], [], ..(filled,) * 7, [],
     [Writing up], [], [], [], [], [], [], ..(filled,) * 4,
   ),
