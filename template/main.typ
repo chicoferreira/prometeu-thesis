@@ -41,8 +41,10 @@
   #pagebreak()
   #outline(title: [List of Tables], target: figure.where(kind: table))
   #pagebreak()
+  = Acronyms
   #show-acronyms(acronyms-data)
   #pagebreak()
+  = Glossary
   #show-glossary(glossary-data)
   #pagebreak()
 ]

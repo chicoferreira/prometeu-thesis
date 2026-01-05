@@ -1,60 +1,48 @@
 #import "@preview/glossarium:0.5.9": *
 
 #let custom-acronyms-print-title(entry) = {
-  let result = text(weight: "bold")[#entry.short]
-  
+  let result = text(weight: "bold", entry.short)
+
   if "long" in entry and entry.long != none and entry.long != "" {
-    result += h(0.5em) + entry.long + "."
+    result += h(0.5em) + entry.long + [.]
   }
 
-  return result
+  result
 }
 
 #let show-acronyms(
   entries,
   show-all: false,
-) = {
-  [= Acronyms]
-
-  print-glossary(
-    entries,
-    show-all: show-all,
-    disable-back-references: true,
-    user-print-title: custom-acronyms-print-title,
-  )
-}
+) = print-glossary(
+  entries,
+  show-all: show-all,
+  disable-back-references: true,
+  user-print-title: custom-acronyms-print-title,
+)
 
 #let custom-glossary-print-title(entry) = {
-  let result = ""
+  let result = []
   if not "long" in entry or entry.long == none or entry.long == "" {
-    result = text(weight: "bold")[#entry.short]  
+    result = text(weight: "bold", entry.short)
   } else {
-    result = text(weight: "bold")[#entry.long]
+    result = text(weight: "bold", entry.long)
   }
 
   result += h(0.5em) + entry.description
 
-  return result
+  result
 }
 
-#let custom-glossary-print-description(entry) = {
-  if entry.description != none {
-    return "."
-  }
-}
+#let custom-glossary-print-description(entry) = if entry.description != none { [.] }
 
 #let show-glossary(
   entries,
   show-all: false,
-) = {
-  [= Glossary]
-
-  print-glossary(
-    entries,
-    show-all: show-all,
-    disable-back-references: true,
-    user-print-title: custom-glossary-print-title,
-    user-print-description: custom-glossary-print-description,
-    description-separator: ""
-  )
-}
+) = print-glossary(
+  entries,
+  show-all: show-all,
+  disable-back-references: true,
+  user-print-title: custom-glossary-print-title,
+  user-print-description: custom-glossary-print-description,
+  description-separator: [],
+)
