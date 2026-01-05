@@ -16,12 +16,35 @@
 
 // Setup glossary and acronyms
 #import "@preview/glossarium:0.5.9": *
-#import "glossary.typ": *
 
 #show: make-glossary
 #let acronyms-data = yaml("acronyms.yml")
 #let glossary-data = yaml("glossary.yml")
 #register-glossary(acronyms-data + glossary-data)
+
+#let show-acronyms = print-glossary(
+  acronyms-data,
+  // Change this to your liking
+  show-all: true,
+  disable-back-references: true,
+  user-print-title: entry => {
+    let description = if entry.long != none { h(0.5em) + entry.long + [.] }
+    text(weight: "bold", entry.short) + description
+  },
+)
+
+#let show-glossary = print-glossary(
+  glossary-data,
+  // Change this to your liking
+  show-all: true,
+  disable-back-references: true,
+  user-print-title: entry => {
+    let title = if entry.long == none { entry.short } else { entry.long }
+    text(weight: "bold", title) + h(0.5em) + entry.description
+  },
+  user-print-description: entry => if entry.description != none { [.] },
+  description-separator: [],
+)
 
 // Setup index
 #import "@preview/in-dexter:0.7.2": *
@@ -42,10 +65,10 @@
   #outline(title: [List of Tables], target: figure.where(kind: table))
   #pagebreak()
   = Acronyms
-  #show-acronyms(acronyms-data)
+  #show-acronyms
   #pagebreak()
   = Glossary
-  #show-glossary(glossary-data)
+  #show-glossary
   #pagebreak()
 ]
 
