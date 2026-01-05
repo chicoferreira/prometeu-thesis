@@ -1,15 +1,5 @@
 #import "@preview/glossarium:0.5.9": *
 
-#let custom-acronyms-print-title(entry) = {
-  let result = text(weight: "bold", entry.short)
-
-  if "long" in entry and entry.long != none and entry.long != "" {
-    result += h(0.5em) + entry.long + [.]
-  }
-
-  result
-}
-
 #let show-acronyms(
   entries,
   show-all: false,
@@ -17,23 +7,16 @@
   entries,
   show-all: show-all,
   disable-back-references: true,
-  user-print-title: custom-acronyms-print-title,
+  user-print-title: entry => {
+    let result = text(weight: "bold", entry.short)
+
+    if "long" in entry and entry.long != none and entry.long != "" {
+      result += h(0.5em) + entry.long + [.]
+    }
+
+    result
+  },
 )
-
-#let custom-glossary-print-title(entry) = {
-  let result = []
-  if not "long" in entry or entry.long == none or entry.long == "" {
-    result = text(weight: "bold", entry.short)
-  } else {
-    result = text(weight: "bold", entry.long)
-  }
-
-  result += h(0.5em) + entry.description
-
-  result
-}
-
-#let custom-glossary-print-description(entry) = if entry.description != none { [.] }
 
 #let show-glossary(
   entries,
@@ -42,7 +25,14 @@
   entries,
   show-all: show-all,
   disable-back-references: true,
-  user-print-title: custom-glossary-print-title,
-  user-print-description: custom-glossary-print-description,
+  user-print-title: entry => {
+    let entry-title = if not "long" in entry or entry.long == none or entry.long == "" {
+      entry.short
+    } else {
+      entry.long
+    }
+    text(weight: "bold", entry-title) + h(0.5em) + entry.description
+  },
+  user-print-description: entry => if entry.description != none { [.] },
   description-separator: [],
 )
