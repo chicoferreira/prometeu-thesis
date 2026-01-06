@@ -62,7 +62,7 @@
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     block(inset: (top: 30mm, bottom: 15mm), {
-      if it.supplement != none and it.numbering != none {
+      if it.supplement != [] and it.numbering != none {
         block(
           text(15pt, {
             it.supplement + [ ] + counter(heading).display(it.numbering)
