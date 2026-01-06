@@ -1,4 +1,5 @@
-#import "@preview/prometeu-thesis:0.2.0": colors, formatting, thesis
+// DO NOT FORGET TO UPDATE THIS WHEN UPDATING THE VERSIONS
+#import "../src/lib.typ": colors, formatting, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -13,7 +14,7 @@
   school: [School of Engineering],
   degree: [Master's Dissertation in Informatics Engineering],
   // Set this to "pt" for Portuguese titles
-  language: "en"
+  language: "en",
 )
 
 // Setup glossary and acronyms
@@ -51,27 +52,6 @@
 // Setup index
 #import "@preview/in-dexter:0.7.2": *
 
-// Setup custom headings
-#set heading(supplement: [Chapter], numbering: "1.1") // Change to [Capítulo] for Portuguese
-
-#show heading.where(level: 1): it => {
-  pagebreak(weak: true)
-  block(inset: (top: 30mm, bottom: 15mm), {
-    if it.supplement != none and it.numbering != none {
-      block(text(15pt, {
-        it.supplement + [ ] + counter(heading).display(it.numbering)
-      }), below: 7mm)
-    }
-    block(text(18pt, it.body))
-  })
-}
-
-#show heading.where(level: 2): it => {
-  set text(16pt)
-  set block(above: 2.5em, below: 1.5em)
-  it
-}
-
 #[
   #set page(numbering: "i")
   #counter(page).update(1)
@@ -102,7 +82,7 @@
 ]
 
 #counter(page).update(1)
-#set heading(numbering: "1.1")
+#set heading(supplement: [Chapter], numbering: "1.1") // Change to [Capítulo] for Portuguese
 
 = Introduction
 
@@ -170,7 +150,10 @@ Example of inserting an image as displayed text,
 
 or as a figure:
 
-#figure(image("logos/uminho/color/UM.jpg", width: 30%), caption: [Logo of the University of Minho])
+#figure(
+  image("logos/uminho/color/UM.jpg", width: 30%),
+  caption: [Logo of the University of Minho],
+)
 
 = Core of the Dissertation
 
