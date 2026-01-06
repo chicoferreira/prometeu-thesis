@@ -1,14 +1,12 @@
-= Appendices
-
-== Support work
+= Support work
 
 Auxiliary results which are not main-stream.
 
-== Details of results
+= Details of results
 
 Details of results whose length would compromise readability of main text.
 
-== Listings
+= Listings
 
 Should this be the case.
 
@@ -27,7 +25,7 @@ Should this be the case.
   caption: [Factorial function],
 )
 
-== Tooling
+= Tooling
 
 (Should this be the case)
 
