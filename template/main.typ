@@ -144,7 +144,12 @@ Example of inserting an image as displayed text,
 
 or as a figure:
 
-#figure(image("logos/uminho/color/UM.jpg", width: 30%), caption: [Logo of the University of Minho])
+#figure(
+  image("logos/uminho/color/UM.jpg", width: 30%),
+  caption: [Logo of the University of Minho]
+) <uminhologo>
+
+You can also reference figures like @uminhologo.
 
 = Core of the Dissertation
 
