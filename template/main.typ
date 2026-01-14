@@ -147,9 +147,9 @@ or as a figure:
 #figure(
   image("logos/uminho/color/UM.jpg", width: 30%),
   caption: [Logo of the University of Minho]
-) <fig:somefigure> // name to reference the figure
+) <somefigure> // name to reference the figure
 
-You can also reference figures like @fig:somefigure
+You can also reference figures like @somefigure
 
 = Core of the Dissertation
 
