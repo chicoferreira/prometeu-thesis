@@ -1,5 +1,4 @@
-// DO NOT FORGET TO UPDATE THIS WHEN UPDATING THE VERSIONS
-#import "../src/lib.typ": colors, thesis
+#import "@preview/prometeu-thesis:1.0.0": colors, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -18,7 +17,7 @@
 )
 
 // Setup glossary and acronyms
-#import "@preview/glossarium:0.5.9": *
+#import "@preview/glossarium:0.5.10": *
 
 #show: make-glossary
 #let acronyms-data = yaml("acronyms.yml")

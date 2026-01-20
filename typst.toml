@@ -1,6 +1,6 @@
 [package]
 name = "prometeu-thesis"
-version = "0.2.0"
+version = "1.0.0"
 entrypoint = "src/lib.typ"
 authors = ["chicoferreira <@chicoferreira>"]
 license = "MIT"
