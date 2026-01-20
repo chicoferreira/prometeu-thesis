@@ -1,7 +1,6 @@
 #import "colors.typ"
 #import "cover.typ": render-cover
 #import "state.typ"
-#import "formatting.typ"
 
 #let thesis(
   author: "",

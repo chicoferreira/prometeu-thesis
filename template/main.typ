@@ -1,5 +1,5 @@
 // DO NOT FORGET TO UPDATE THIS WHEN UPDATING THE VERSIONS
-#import "../src/lib.typ": colors, formatting, thesis
+#import "../src/lib.typ": colors, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -155,9 +155,8 @@ or as a figure:
   caption: [Logo of the University of Minho],
 )
 
-= Core of the Dissertation
 
-== Contribution
+= Contribution
 
 Main result(s) and their scientific evidence
 
