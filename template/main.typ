@@ -1,4 +1,5 @@
-#import "@preview/prometeu-thesis:0.2.0": colors, formatting, thesis
+// DO NOT FORGET TO UPDATE THIS WHEN UPDATING THE VERSIONS
+#import "../src/lib.typ": colors, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -13,7 +14,7 @@
   school: [School of Engineering],
   degree: [Master's Dissertation in Informatics Engineering],
   // Set this to "pt" for Portuguese titles
-  language: "en"
+  language: "en",
 )
 
 // Setup glossary and acronyms
@@ -51,7 +52,13 @@
 // Setup index
 #import "@preview/in-dexter:0.7.2": *
 
-#formatting.show-preamble[
+#[
+  #set page(numbering: "i")
+  #counter(page).update(1)
+
+  // Preamble should not be included in the outline
+  #set heading(outlined: false, supplement: none, numbering: none)
+
   #include "preamble/copyright.typ"
   #pagebreak()
   #include "preamble/acknowledgements.typ"
@@ -74,18 +81,17 @@
   #pagebreak()
 ]
 
-#show: formatting.show-main-content
+#counter(page).update(1)
+#set heading(supplement: [Chapter], numbering: "1.1") // Change to [Capítulo] for Portuguese
 
-= Introductory Material
-
-== Introduction
+= Introduction
 
 Context, motivation, main aims.
 
-== State of the Art
+= State of the Art
 State of the art review; related work.
 
-=== Citations
+== Citations
 
 Example of a citation: @rustbook or #cite(<rustbook>, form: "full"). This entry is in the `bibliography.yml` file.
 
@@ -93,7 +99,7 @@ Example of a citation: @rustbook or #cite(<rustbook>, form: "full"). This entry 
 
 Check more information about bibliography #link("https://typst.app/docs/reference/model/bibliography/")[here] and #link("https://typst.app/docs/reference/model/cite/")[here].
 
-=== Mathematical expressions
+== Mathematical expressions
 
 The mass-energy equivalence is expressed by the equation
 
@@ -112,11 +118,11 @@ $
 
 Check more information about math expressions #link("https://typst.app/docs/reference/math/equation/")[here].
 
-=== Footnotes
+== Footnotes
 
 This is a footnote example #footnote[The quick brown fox jumps over the lazy dog.].
 
-=== Acronyms and Glossary
+== Acronyms and Glossary
 
 Given a set of numbers, there are elementary methods to compute its @gcd:long, which is abbreviated @gcd:short. This process is similar to that used for the @lcm.
 
@@ -124,7 +130,7 @@ The @typst language is specially suitable for documents that include @maths:long
 
 This glossary is powered by the #link("https://typst.app/universe/package/glossarium/")[glossarium] package. Check more about it there.
 
-=== Index
+== Index
 
 In this example, several keywords #index[keywords] will be used which are important and deserve to appear in the Index#index[Index].
 
@@ -132,11 +138,11 @@ Terms like generate #index[generate] and some #index[others] will also show up. 
 
 The index is powered by the #link("https://typst.app/universe/package/in-dexter/")[in-dexter] package. Check more about it there.
 
-== The problem and its challenges
+= The problem and its challenges
 
 The problem and its challenges.
 
-=== Images
+== Images
 
 Example of inserting an image as displayed text,
 
@@ -146,40 +152,38 @@ or as a figure:
 
 #figure(
   image("logos/uminho/color/UM.jpg", width: 30%),
-  caption: [Logo of the University of Minho]
+  caption: [Logo of the University of Minho],
 ) <uminhologo>
 
 You can also reference figures like @uminhologo.
 
-= Core of the Dissertation
-
-== Contribution
+= Contribution
 
 Main result(s) and their scientific evidence
 
-=== Introduction
+== Introduction
 
-=== Summary
+== Summary
 
-== Applications
+= Applications
 
 Applications of the main result (examples and case studies)
 
-=== Introduction
+== Introduction
 
-=== Summary
+== Summary
 
-== Conclusions and future work
+= Conclusions and future work
 
 Conclusions and future work
 
-=== Conclusions
+== Conclusions
 
-=== Future work
+== Future work
 
-== Planned Schedule
+= Planned Schedule
 
-=== Activities
+== Activities
 
 #let filled = $circle.filled.small$
 
@@ -197,13 +201,16 @@ Conclusions and future work
 
 For more elegant visualisation check some community-made packages like #link("https://typst.app/universe/package/gantty/")[gantty] or #link("https://typst.app/universe/package/timeliney/")[timeliney].
 
-#formatting.show-postamble[
+#[
+  #set heading(numbering: none)
+
   // Render bibliography
   // Change this to a .bib file if you prefer that format instead
   #bibliography("bibliography.yml", full: true)
 
   // Render index
-  #heading(level: 1, outlined: false)[Index]
+  #set heading(outlined: false)
+  = Index
   #columns(
     2,
     make-index(
@@ -217,7 +224,10 @@ For more elegant visualisation check some community-made packages like #link("ht
   )
 ]
 
-#formatting.show-appendix[
+#[
+  #counter(heading).update(0)
+  #set heading(numbering: "A.1", supplement: [Appendix]) // Change to [Apêndice] for Portuguese
+
   #include "appendix.typ"
 ]
 
