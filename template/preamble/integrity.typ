@@ -6,7 +6,7 @@ I hereby declare having conducted this academic work with integrity.
 
 I confirm that I have not used plagiarism or any form of undue use of information or falsification of results along the process leading to its elaboration.
 
-I further declare that I have fully acknowledged the Code of Ethical Conduct of the University of Minho.
+I further declare that I have fully acknowledged the Code of Ethics and Conduct of the University of Minho.
 
 \
 University of Minho, Braga, #context state.date.get()
@@ -24,7 +24,7 @@ I hereby declare having acted this academic work with integrity and confirm that
 
 I further declare that any use of AI tools was done in a transparent and responsible manner, being duly noted in the work, and that I critically verified the accuracy of the content produced with their support, assuming full responsibility for what I submit.
 
-I further declare that I have fully acknowledged the Code of Ethical Conduct of the University of Minho, as well as the applicable standards of academic integrity and data protection.
+I further declare that I have fully acknowledged the Code of Ethics and Conduct of the University of Minho, as well as the applicable standards of academic integrity and data protection.
 
 \
 University of Minho, Braga, #context state.date.get()
