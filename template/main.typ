@@ -53,7 +53,8 @@
 
 #[
   #set page(numbering: "i")
-  #counter(page).update(1)
+  // The title page is not numbered, but it must be counted, so the preamble starts at 2
+  #counter(page).update(2)
 
   // Preamble should not be included in the outline
   #set heading(outlined: false, supplement: none, numbering: none)
