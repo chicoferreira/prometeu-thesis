@@ -11,6 +11,7 @@ I further declare that I have fully acknowledged the Code of Ethical Conduct of 
 \
 University of Minho, Braga, #context state.date.get()
 
+// Vertical space left for the author to insert their digital signature
 #v(20mm)
 
 #context state.author.get()
@@ -28,6 +29,7 @@ I further declare that I have fully acknowledged the Code of Ethical Conduct of 
 \
 University of Minho, Braga, #context state.date.get()
 
+// Vertical space left for the author to insert their digital signature
 #v(20mm)
 
 #context state.author.get()
