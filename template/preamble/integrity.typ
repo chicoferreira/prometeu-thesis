@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:1.0.0": state
+#import "@preview/prometeu-thesis:1.1.0": state
 
 = Statement of Integrity
 

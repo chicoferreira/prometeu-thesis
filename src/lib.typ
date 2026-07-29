@@ -34,6 +34,7 @@
   set document(title: title, author: author)
 
   state.author.update(author)
+  state.title.update(title)
   state.date.update(date)
   state.language.update(language)
 
