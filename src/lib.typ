@@ -27,6 +27,12 @@
   set par(leading: 0.95em, spacing: 1.9em, justify: true)
   show footnote.entry: set text(size: 8pt)
 
+  // Typst takes the superscript size from the font's own metrics, and NewsGotT
+  // declares a very small one (4.8pt at 12pt text). 
+  // Setting it explicitly to be readable, but still smaller than the text.
+  show footnote: set super(size: 0.7em)
+  show footnote.entry: set super(size: 0.7em)
+
   show footnote: set text(fill: colors.blueuminho)
   show cite: set text(fill: colors.blueuminho)
   show link: set text(fill: colors.blueuminho)
