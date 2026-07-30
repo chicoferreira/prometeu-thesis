@@ -3,7 +3,7 @@
 #show: thesis(
   author: "Author's full name",
   title: [Title Title Title Title Title Title \ Title Title Title Title Title \ Title Title Title Title],
-  date: [september 2025],
+  date: [July 2026],
   supervisors: (
     [Supervisor Name],
     [Co-Supervisor Name],
