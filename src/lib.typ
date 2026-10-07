@@ -88,3 +88,24 @@
 
   doc
 }
+
+// Appendix numbering: headings as `A`, `A.1`, ... and figures as `A.1`, `A.2`, `B.1`, ...
+#let appendix(body) = {
+  counter(heading).update(0)
+  set heading(
+    numbering: "A.1",
+    supplement: context if text.lang == "pt" [Apêndice] else [Appendix],
+  )
+
+  show heading.where(level: 1): it => {
+    // Restart figure numbering in each appendix. Each figure kind has its own
+    // counter, so reset all of them, including custom ones like `figure(kind: "algorithm")`
+    context for kind in query(figure).map(f => f.kind).dedup() {
+      counter(figure.where(kind: kind)).update(0)
+    }
+    it
+  }
+  set figure(numbering: n => numbering("A.1", counter(heading).get().first(), n))
+
+  body
+}

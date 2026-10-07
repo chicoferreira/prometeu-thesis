@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:1.1.0": colors, thesis
+#import "@preview/prometeu-thesis:1.1.0": appendix, colors, thesis
 
 #show: thesis(
   author: "Author's full name",
@@ -225,8 +225,8 @@ For more elegant visualisation check some community-made packages like #link("ht
 ]
 
 #[
-  #counter(heading).update(0)
-  #set heading(numbering: "A.1", supplement: [Appendix]) // Change to [Apêndice] for Portuguese
+  // Number appendices as `A`, `B`, ... and their figures as `A.1`, `A.2`, ...
+  #show: appendix
 
   #include "appendix.typ"
 ]
