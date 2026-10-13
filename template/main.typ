@@ -82,16 +82,16 @@
 ]
 
 #counter(page).update(1)
-#set heading(supplement: [Chapter], numbering: "1.1") // Change to [Capítulo] for Portuguese
+#set heading(supplement: it => if it.depth == 1 [Chapter] else [Section], numbering: "1.1") // Change to [Capítulo] and [Secção] for Portuguese
 
 = Introduction
 
 Context, motivation, main aims.
 
-= State of the Art
+= State of the Art <state-of-the-art>
 State of the art review; related work.
 
-== Citations
+== Citations <citations>
 
 Example of a citation: @rustbook or #cite(<rustbook>, form: "full"). This entry is in the `bibliography.yml` file.
 
@@ -155,7 +155,7 @@ or as a figure:
   caption: [Logo of the University of Minho],
 ) <uminhologo>
 
-You can also reference figures like @uminhologo.
+You can also reference figures like @uminhologo, chapters like @state-of-the-art, sections like @citations and appendices like @listings.
 
 = Contribution
 

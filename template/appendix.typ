@@ -6,7 +6,7 @@ Auxiliary results which are not main-stream.
 
 Details of results whose length would compromise readability of main text.
 
-= Listings
+= Listings <listings>
 
 Should this be the case.
 
