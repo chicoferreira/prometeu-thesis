@@ -16,7 +16,7 @@ You can find the unmodified output of the template in [example.pdf](./example.pd
 
 This template requires the following fonts: NewsGotT (001.005), NewsGotTBold (001.005) and NewsGoth Lt BT (2.001 mfgpctt 4.4).
 
-Unfortunately, Typst [disallows font files to be bundled in packages](https://github.com/typst/packages/blob/main/docs/resources.md#fonts-are-not-supported-in-packages). The original fonts (.ttf files) should be grabbed from the zip file on the [official LaTeX template](https://web.di.uminho.pt/sitedi/latex/).
+Unfortunately, Typst [disallows font files to be bundled in packages](https://github.com/typst/packages/blob/0ae72156dda3d538389175adcd1f53de6b0ef354/docs/resources.md#fonts-are-not-supported-in-packages). The original fonts (.ttf files) should be grabbed from the zip file on the [official LaTeX template](https://web.di.uminho.pt/sitedi/latex/).
 
 ### Using on Typst Web
 
