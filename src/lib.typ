@@ -23,6 +23,8 @@
     lang: language,
     region: if language == "pt" { "PT" } else { "US" },
   )
+  // NewsGotT's font kerning makes accented letters (é, á, ...) overlap the letters next to them. Disable kerning to fix this.
+  show regex("[À-ÿ]"): set text(kerning: false)
 
   set par(leading: 0.95em, spacing: 1.9em, justify: true)
   show footnote.entry: set text(size: 8pt)
