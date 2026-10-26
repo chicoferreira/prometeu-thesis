@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:1.2.0": state
+#import "@preview/prometeu-thesis:1.2.1": state
 
 = Resumo
 

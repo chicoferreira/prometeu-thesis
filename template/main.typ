@@ -1,4 +1,4 @@
-#import "@preview/prometeu-thesis:1.2.0": appendix, colors, thesis
+#import "@preview/prometeu-thesis:1.2.1": appendix, colors, thesis
 
 #show: thesis(
   author: "Author's full name",
