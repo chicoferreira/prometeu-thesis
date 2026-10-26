@@ -56,10 +56,18 @@
     language: language,
   )
 
-  // Fake italic as NewsGotT doesn't have an italic style
-  // Change regex if italic is broken when changing lines
+  // Fake italic as NewsGotT doesn't have an italic style.
+  // Same slant as Word's fake italic (a 1/3 shear, about 18.4deg).
+  let slant = 18.4deg
+  // We try to slant around half the x-height (0.475em) so the spaces on both sides stay even.
+  // but skew can only pivot at the baseline or the centre, so we pivot at the baseline and shift left.
+  let shift = calc.tan(slant) * 0.475em / 2
+  let fake-italic(word) = box(move(dx: -shift, skew(ax: -slant, origin: bottom, reflow: false, word)))
+
   show emph: it => {
-    show regex("\S+"): it => box(skew(ax: -18.4deg, reflow: false, it))
+    // Slant each word separately so lines can still break between them.
+    // Change regex if italic is broken when changing lines
+    show regex("\S+"): fake-italic
     it
   }
 
