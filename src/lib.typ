@@ -1,6 +1,7 @@
 #import "colors.typ"
 #import "cover.typ": render-cover
 #import "state.typ"
+#import "fake-italic.typ": fake-italic
 
 #let thesis(
   author: "",
@@ -46,6 +47,8 @@
   state.date.update(date)
   state.language.update(language)
 
+  show emph: fake-italic
+
   render-cover(
     author: author,
     title: title,
@@ -58,33 +61,13 @@
     language: language,
   )
 
-  // Fake italic as NewsGotT doesn't have an italic style.
-  // Same slant as Word's fake italic (a 1/3 shear, about 18.4deg).
-  let slant = 18.4deg
-  // We try to slant around half the x-height (0.475em) so the spaces on both sides stay even.
-  // but skew can only pivot at the baseline or the centre, so we pivot at the baseline and shift left.
-  let shift = calc.tan(slant) * 0.475em / 2
-  let fake-italic(word) = box(move(dx: -shift, skew(ax: -slant, origin: bottom, reflow: false, word)))
-
-  show emph: it => {
-    // Slant each word separately so lines can still break between them.
-    // Change regex if italic is broken when changing lines
-    show regex("\S+"): fake-italic
-    it
-  }
-
   set page(margin: 25mm, numbering: "1")
 
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     block(inset: (top: 30mm, bottom: 15mm), {
       if it.supplement != [] and it.numbering != none {
-        block(
-          text(15pt, {
-            it.supplement + [ ] + counter(heading).display(it.numbering)
-          }),
-          below: 7mm,
-        )
+        block(below: 7mm, text(15pt, it.supplement + [ ] + counter(heading).display(it.numbering)))
       }
       block(text(18pt, it.body))
     })
