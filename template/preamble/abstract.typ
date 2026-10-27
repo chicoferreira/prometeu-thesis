@@ -1,5 +1,7 @@
 #import "@preview/prometeu-thesis:1.2.1": state
 
+#set text(lang: "pt", region: "PT")
+
 = Resumo
 
 *#context state.title.get()*
@@ -10,6 +12,8 @@ Escrever aqui o resumo (em português)
 *Palavras-chave* #h(10pt) palavras, chaves, aqui, separadas, por, vírgulas
 
 #pagebreak()
+
+#set text(lang: "en", region: "US")
 
 = Abstract
 
